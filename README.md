@@ -2,6 +2,8 @@
 
 # Full-Stack Authentication Application
 
+![Demo Screenshot](https://github.com/Mayukh0108/Assignment-IntelliSQR/blob/main/image.png?raw=true)
+
 A full-stack authentication app built with React (TypeScript), Node.js, Prisma, and MongoDB. Implements user registration/login with proper error handling, schema validation, and modern development practices.
 
 ## Features
