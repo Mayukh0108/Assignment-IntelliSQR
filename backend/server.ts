@@ -15,10 +15,9 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 
-// Error handling middleware
-// app.use((err, req, res, next) => {
-//   res.status(500).json({ message: err.message });
-// });
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

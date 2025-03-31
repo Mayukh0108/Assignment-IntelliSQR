@@ -6,7 +6,7 @@ import axios, { AxiosResponse } from 'axios';
 
 // Zod schema for validation
 const schema = z.object({
-  email: z.string().email({ message: 'Invalid UID' }),
+  userId: z.string().min(3, { message: 'UID must be at least 3 characters' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
 });
 
@@ -40,11 +40,11 @@ const LoginForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* UID Input */}
           <input
-            {...register('email')}
+            {...register('userId')}
             placeholder="UID"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
+          {errors.userId && <span className="text-red-500 text-sm">{errors.userId.message}</span>}
 
           {/* Password Input */}
           <input
@@ -66,7 +66,7 @@ const LoginForm = () => {
           {/* Error or Success Messages */}
           {mutation.isError && (
             <div className="text-red-500 text-sm">
-              Error: {(mutation.error as any)?.response?.data?.message || 'Something went wrong'}
+              Error: {(mutation.error as any)?.response?.data?.message || 'Invalid credentials'}
             </div>
           )}
           {mutation.isSuccess && (

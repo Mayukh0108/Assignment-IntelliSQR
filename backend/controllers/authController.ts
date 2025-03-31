@@ -6,22 +6,22 @@ import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
-  const { email, password } = req.body;
+  const { userId, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
     const user = await prisma.user.create({
-      data: { email, password: hashedPassword },
+      data: { userId, email, password: hashedPassword },
     });
-    res.status(201).json({ userId: user.id });
+    res.status(201).json({ user: user.userId });
   } catch (error) {
-    res.status(400).json({ message: 'Email already exists' });
+    res.status(400).json({ message: 'User already exists' });
   }
 };
 
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
-  const { email, password } = req.body;
-  const user = await prisma.user.findUnique({ where: { email } });
+  const { userId, password } = req.body;
+  const user = await prisma.user.findUnique({ where: { userId } });
 
   if (!user || !(await bcrypt.compare(password, user.password))) {
     res.status(401).json({ message: 'Invalid credentials' });
