@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcrypt';
 import authRoutes from './routes/authRoutes';
 import dotenv from 'dotenv';
 
