@@ -34,5 +34,23 @@ A full-stack authentication app built with React (TypeScript), Node.js, Prisma, 
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/fullstack-auth-app.git
+git clone https://github.com/Mayukh0108/Assignment-IntelliSQR.git
 cd fullstack-auth-app
+```
+
+### 2. Backend Setup & Running
+```bash
+cd backend
+npm install
+
+npx prisma generate
+node server.ts
+```
+
+### 2. Frontend Setup & Running
+```bash
+cd frontend
+npm install
+
+npm run dev
+```
